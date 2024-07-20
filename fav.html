@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Favorite container -->
+    <div id="fav-container">
+        <div class="header">
+            <h1>Favorites</h1>
+            <button id="clear-favorites-btn">Clear Favorites</button>
+            <a href="main.html" class="back-button">Back</a>
+        </div>
+        <div id="fav-list" class="grid-container"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImg" src="" alt="">
+            <h3 id="modalTitle"></h3>
+            <div id="modalOverview" class="modal-grid"></div>
+        </div>
+    </div>
+
+    <script src="fav.js"></script>
+</body>
+
+</html>

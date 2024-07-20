@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up / Login</title>
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <input type="checkbox" id="signup_toggle">
+        <form class="form" id="userForm">
+            <div class="form_front">
+                <div class="form_details">Login</div>
+                <input placeholder="Username" class="input" type="text" id="loginUsername">
+                <input placeholder="Password" class="input" type="password" id="loginPassword">
+                <button class="btn" type="button" onclick="login()">Login</button>
+                <span class="switch">Don't have an account?
+                    <label class="signup_tog" for="signup_toggle">
+                        Sign Up
+                    </label>
+                </span>
+            </div>
+            
+            <div class="form_back">
+                <div class="form_details">Sign Up</div>
+                <input placeholder="Email" class="input" type="text" id="signupEmail">
+                <input placeholder="Password" class="input" type="password" id="signupPassword">
+                <input placeholder="Confirm Password" class="input" type="password" id="signupConfirmPassword">
+                <button class="btn" type="button" onclick="signup()">Sign Up</button>
+                <span class="switch">Already have an account?
+                    <label class="signup_tog" for="signup_toggle">
+                        Sign In
+                    </label>
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        /* General body styles start */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #D4A576 0%, #D3A373 100%);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        /* General body styles end */
+
+        /* Container styles start */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            perspective: 1000px;
+        }
+        /* Container styles end */
+
+        /* Form styles start */
+        .form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            transition: all 1s ease;
+            width: 300px;
+            height: 400px;
+            position: relative;
+        }
+        /* Form styles end */
+
+        /* Form front and back styles start */
+        .form_front,
+        .form_back {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            position: absolute;
+            backface-visibility: hidden;
+            padding: 40px 25px;
+            border-radius: 15px;
+            box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5),
+                inset -1px -1px 5px rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .form_back {
+            transform: rotateY(180deg);
+        }
+        /* Form front and back styles end */
+
+        /* Form details styles start */
+        .form_details {
+            font-size: 25px;
+            font-weight: 600;
+            padding-bottom: 10px;
+            color: white;
+        }
+        /* Form details styles end */
+
+        /* Input styles start */
+        .input {
+            width: 245px;
+            min-height: 45px;
+            color: #000;
+            outline: none;
+            transition: 0.35s;
+            padding: 0px 7px;
+            background-color: #f5f5f5;
+            border-radius: 6px;
+            border: 2px solid #ddd;
+            box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1),
+                1px 1px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .input::placeholder {
+            color: black;
+        }
+
+        .input:focus::placeholder {
+            transition: 0.3s;
+            opacity: 0;
+        }
+
+        .input:focus {
+            transform: scale(1.05);
+            box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2),
+                1px 1px 10px rgba(255, 255, 255, 0.5),
+                inset 2px 2px 10px rgba(0, 0, 0, 0.1),
+                inset -1px -1px 5px rgba(255, 255, 255, 0.5);
+        }
+        /* Input styles end */
+
+        /* Button styles start */
+        .btn {
+            padding: 10px 35px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            border-radius: 6px;
+            border: 2px solid #4CAF50;
+            box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.1),
+                1px 1px 10px rgba(255, 255, 255, 0.5);
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.35s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2),
+                1px 1px 10px rgba(255, 255, 255, 0.5),
+                inset 2px 2px 10px rgba(0, 0, 0, 0.1),
+                inset -1px -1px 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn:focus {
+            transform: scale(1.05);
+            box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2),
+                1px 1px 10px rgba(255, 255, 255, 0.5),
+                inset 2px 2px 10px rgba(0, 0, 0, 0.1),
+                inset -1px -1px 5px rgba(255, 255, 255, 0.5);
+        }
+        /* Button styles end */
+
+        /* Switch and toggle styles start */
+        .switch {
+            font-size: 13px;
+            color: white;
+        }
+
+        .signup_tog {
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        #signup_toggle {
+            display: none;
+        }
+
+        #signup_toggle:checked+.form {
+            transform: rotateY(180deg);
+        }
+        /* Switch and toggle styles end */
+    </style>
+
+    <!-- SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+    <script>
+        /* Sign up form start */
+        function signup() {
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+
+            if (password === confirmPassword) {
+                localStorage.setItem('email', email);
+                localStorage.setItem('password', password);
+                Swal.fire({
+                    icon: "success",
+                    title: "Sign Up successful! Please login now.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                // Flip the form back to login view
+                setTimeout(() => {
+                    document.getElementById('signup_toggle').checked = false;
+                }, 1500);
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Passwords do not match!"    
+                });
+            }
+        }
+        /* Sign up form end */
+
+        /* Login form start */
+        function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const storedEmail = localStorage.getItem('email');
+            const storedPassword = localStorage.getItem('password');
+
+            if (username === storedEmail && password === storedPassword) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Login successful!",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    window.location.href = 'main.html';
+                });
+            } else {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Login failed. Incorrect email or password.",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+            }
+        }
+        /* Login form end */
+    </script>
+</body>
+
+</html>

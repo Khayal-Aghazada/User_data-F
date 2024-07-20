@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+
+<body>
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="assets/1.png" alt=""></div>
+            <div class="swiper-slide"><img src="assets/2.png" alt=""></div>
+            <div class="swiper-slide"><img src="assets/3.png" alt=""></div>
+            <div class="swiper-slide"><img src="assets/4.png" alt=""></div>
+            <div class="swiper-slide"><img src="assets/5.png" alt=""></div>
+            <div class="swiper-slide"><img src="assets/6.png" alt=""></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+
+    <!-- User Data -->
+    <div id="data-container">
+        <div class="header">
+            <h1>User Data</h1>
+            <i class="fa-solid fa-star" id="favorites-btn" title="Favorites"></i>
+        </div>
+
+        <button id="add-user-btn" class="button">Add User</button>
+        <button id="choose-best-player-btn" class="button">Best Employee</button>
+
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search by name or ID">
+        </div>
+        <div id="user-list" class="grid-container"></div>
+    </div>
+
+
+    <!-- Modal for reading/updating user details -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="imgBox">
+                <img id="modalImg" src="" alt="User Image">
+            </div>
+            <form id="updateForm" style="display:none;">
+                <input type="file" id="updateImg">
+                <input type="text" id="updateName" placeholder="Name">
+                <input type="email" id="updateEmail" placeholder="Email">
+                <input type="text" id="updateDepartment" placeholder="Department">
+                <button type="submit" class="button">Update User</button>
+            </form>
+            <div id="modalDetails" class="modal-grid" style="display:none;">
+                <!-- Details will be populated here dynamically -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Add User Modal -->
+    <div id="addUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New User</h2>
+            <form id="addUserForm">
+                <label for="userName">Name:</label>
+                <input type="text" id="userName" name="userName" required>
+
+                <label for="userEmail">Email:</label>
+                <input type="email" id="userEmail" name="userEmail" required>
+
+                <label for="userDepartment">Department:</label>
+                <input type="text" id="userDepartment" name="userDepartment" required>
+
+                <label for="userCountry">Country:</label>
+                <input type="text" id="userCountry" name="userCountry" required>
+
+                <label for="userAvatar">Avatar URL:</label>
+                <input type="url" id="userAvatar" name="userAvatar">
+
+                <label for="userBd">Birthday:</label>
+                <input type="date" id="userBd" name="userBd" required>
+
+                <label for="userIsMarried">Married:</label>
+                <input type="checkbox" id="userIsMarried" name="userIsMarried">
+
+                <label for="userPet">Pet:</label>
+                <input type="text" id="userPet" name="userPet" required>
+
+                <label for="userFavouriteColor">Favourite Color:</label>
+                <input type="text" id="userFavouriteColor" name="userFavouriteColor" required>
+
+                <label for="userStreet">Street:</label>
+                <input type="text" id="userStreet" name="userStreet" required>
+
+                <label for="userGender">Gender:</label>
+                <select id="userGender" name="userGender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+
+                <button type="submit" class="button">Add User</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Choose Best Player Modal -->
+    <div id="chooseBestPlayerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Choose the Best Player</h2>
+            <form id="choosePlayerForm">
+                <label for="playerId">Player ID:</label>
+                <input type="text" id="playerId" name="playerId" required>
+                <button type="submit" class="button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            initialSlide: 1,
+            slidesPerView: 4,
+            spaceBetween: 40,
+            centeredSlides: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+
+            // responsive design for swiper
+            breakpoints: {
+                // When window width is >= 768px
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                // When window width is < 640px
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                }
+            }
+        });
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,533 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #dfbc84;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Swiper Styles start */
+.swiper {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+    background-color: #d7ccc8;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-pagination {
+    bottom: 10px;
+}
+/* Swiper Styles end */
+
+/* Data Container Styles start */
+#data-container,
+#fav-container {
+    background: #cca157;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Added space after the header */
+}
+
+h1 {
+    margin: 0;
+    color: #5d4037;
+}
+
+#favorites-btn,
+.back-button {
+    font-size: 24px;
+    color: #ffeb3b;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #5d4037;
+    color: #ffffff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #3e2723;
+}
+
+.search-bar {
+    margin: 20px 0;
+}
+
+.search-bar input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #5d4037;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-bar input:focus {
+    border-color: #3e2723;
+}
+/* Data Container Styles end */
+
+/* Grid Container Styles start */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+/* Grid Container Styles end */
+
+/* User Card Styles start */
+.user-card {
+    background: #d7ccc8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.user-card img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 2px solid #5d4037;
+}
+
+.user-card div {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.user-card div p {
+    margin: 5px 0;
+    color: #3e2723;
+}
+
+.user-card div p strong {
+    color: #5d4037;
+}
+
+.user-card .fa-star {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #ffb300;
+}
+/* User Card Styles end */
+
+/* Modal Styles start */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #b2ebf2;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid #5d4037;
+}
+
+.modal-content .modal-details {
+    text-align: left;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Modal Styles end */
+
+/* Add User Form Styles start */
+#addUserForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#addUserForm label {
+    margin: 10px 0 5px;
+    width: 100%;
+    text-align: left;
+}
+
+#addUserForm input,
+#addUserForm select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#addUserForm input:focus,
+#addUserForm select:focus {
+    border-color: #00A97F;
+    outline: none;
+}
+
+#addUserForm button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#addUserForm button:hover {
+    background-color: #45a049;
+}
+/* Add User Form Styles end */
+
+/* Button Styles start */
+.button {
+    --color: #9b6105;
+    padding: 0.8em 1.7em;
+    background-color: transparent;
+    border-radius: .3em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 400;
+    font-size: 17px;
+    border: 1px solid;
+    font-family: inherit;
+    text-transform: uppercase;
+    color: var(--color);
+    z-index: 1;
+}
+
+.button::before,
+.button::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
+}
+
+.button::before {
+    top: -1em;
+    left: -1em;
+}
+
+.button::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.button:hover::before,
+.button:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.button:hover {
+    color: rgb(10, 25, 30);
+}
+
+.button:active {
+    filter: brightness(.8);
+}
+
+.read-btn {
+    border-color: green;
+}
+
+.read-btn:hover,
+.read-btn:focus {
+    background: green;
+    border-color: green;
+    box-shadow: 0 0 5px green, 0 0 20px green, 0 0 50px green,
+        0 0 100px green;
+}
+
+.update-btn {
+    border-color: yellow;
+}
+
+.update-btn:hover,
+.update-btn:focus {
+    background: yellow;
+    border-color: yellow;
+    box-shadow: 0 0 5px yellow, 0 0 20px yellow, 0 0 50px yellow,
+        0 0 100px yellow;
+}
+
+.delete-btn {
+    border-color: red;
+}
+
+.delete-btn:hover,
+.delete-btn:focus {
+    background: red;
+    border-color: red;
+    box-shadow: 0 0 5px red, 0 0 20px red, 0 0 50px red,
+        0 0 100px red;
+}
+/* Button Styles end */
+
+/* Update Form Styles start */
+#updateForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#updateForm input[type="file"] {
+    margin-bottom: 15px;
+}
+
+#updateForm input[type="text"],
+#updateForm input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#updateForm button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#updateForm button:hover {
+    background-color: #45a049;
+}
+/* Update Form Styles end */
+
+/* Clear Favorites Button Styles start */
+#clear-favorites-btn {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 7px;
+    border: 1px solid #dfbc84;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    background: transparent;
+    color: black;
+    overflow: hidden;
+    box-shadow: 0 0 0 0 transparent;
+    transition: all 0.2s ease-in;
+}
+
+#clear-favorites-btn:hover {
+    background: #dfbc84;
+    box-shadow: 0 0 30px 5px #ddac5c;
+    transition: all 0.2s ease-out;
+    color: #fff;
+}
+
+#clear-favorites-btn:hover::before {
+    animation: sh02 0.5s 0s linear;
+}
+
+#clear-favorites-btn::before {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0%;
+    opacity: 0;
+    background: #9c9999;
+    box-shadow: 0 0 50px 30px #fff;
+    transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+    from {
+        opacity: 0;
+        left: 0%;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        left: 100%;
+    }
+}
+
+#clear-favorites-btn:active {
+    box-shadow: 0 0 0 0 transparent;
+    transition: box-shadow 0.2s ease-in;
+}
+/* Clear Favorites Button Styles end */
+
+/* Responsive start */
+@media (max-width: 768px) {
+    .swiper {
+        height: 200px;
+    }
+
+    .swiper-slide {
+        font-size: 14px;
+    }
+
+    #data-container,
+    #fav-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+    }
+
+    #favorites-btn,
+    .back-button {
+        font-size: 20px;
+        padding: 8px 16px;
+    }
+
+    .search-bar input {
+        width: 80%;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    .user-card {
+        padding: 15px;
+    }
+
+    .user-card img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 8px;
+    }
+
+    .user-card div p {
+        margin: 4px 0;
+    }
+
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    #addUserForm input,
+    #addUserForm select,
+    #updateForm input[type="text"],
+    #updateForm input[type="email"] {
+        width: calc(100% - 10px);
+        padding: 8px;
+    }
+
+    #addUserForm button,
+    #updateForm button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+
+    .button {
+        padding: 0.6em 1.2em;
+        font-size: 14px;
+    }
+
+    .clear-favorites-btn {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+}
+/* Responsive end */
